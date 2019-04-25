@@ -1,4 +1,5 @@
 const React = window.React;
+const ReactDOM = window.ReactDOM;
 
 const title = React.createElement(
   'h1',
@@ -9,4 +10,20 @@ const title = React.createElement(
   'My First React Element!'
 );
 
-console.log(title);
+const description = React.createElement(
+  'p',
+  null,
+  'I just learned how to create a React node and render it into the DOM.',
+);
+
+const header = React.createElement(
+  'header',
+  null,
+  title,
+  description,
+);
+
+ReactDOM.render(
+  header,
+  document.getElementById('root')
+);
