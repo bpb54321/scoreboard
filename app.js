@@ -1,15 +1,17 @@
 const React = window.React;
 const ReactDOM = window.ReactDOM;
 
-const title = <h1>My First React Element!</h1>;
+const name = "Brian";
 
-const description = <p>I just learned how to create a React node and render it into the DOM.</p>;
+const description = "I just learned how to create a React node and render it into the DOM.";
 
-const header = React.createElement(
-  'header',
-  null,
-  title,
-  description,
+const headerId = "my-header";
+
+let header = (
+  <header id={headerId}>
+    <h1>{name}'s First React Element</h1>
+    <p>{description}</p>
+  </header>
 );
 
 ReactDOM.render(
