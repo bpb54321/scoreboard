@@ -1,6 +1,15 @@
 const React = window.React;
 const ReactDOM = window.ReactDOM;
 
+let Header = () => {
+  return (
+    <header>
+      <h1>Scoreboard</h1>
+      <span className={"stats"}>Players: {1}</span>
+    </header>
+  );
+};
+
 let Counter = () => {
   return (
     <div className={"counter"}>
@@ -25,6 +34,7 @@ let Player = () => {
 let App = () => {
   return (
     <div className={"scoreboard"}>
+      <Header/>
       <Player/>
       <Player/>
     </div>
