@@ -22,9 +22,9 @@ let Player = () => {
   );
 };
 
-let Scoreboard = () => {
+let App = () => {
   return (
-    <div>
+    <div className={"scoreboard"}>
       <Player/>
       <Player/>
     </div>
@@ -32,6 +32,6 @@ let Scoreboard = () => {
 };
 
 ReactDOM.render(
-  <Scoreboard/>,
+  <App/>,
   document.getElementById('root')
 );
