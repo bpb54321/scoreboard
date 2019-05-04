@@ -52,7 +52,7 @@ let App = (props) => {
     <div className={"scoreboard"}>
       <Header
         title={"My Scoreboard"}
-        numberOfPlayers={2}
+        numberOfPlayers={props.initialPlayers.length}
       />
       {
         props.initialPlayers.map(
