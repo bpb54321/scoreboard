@@ -3,18 +3,20 @@ const ReactDOM = window.ReactDOM;
 
 let Counter = () => {
   return (
-    <div>
-      <button>Decrement</button>
-      <span>0</span>
-      <button>Increment</button>
+    <div className={"counter"}>
+      <button className={"counter-action decrement"}>-</button>
+      <span className={"counter-score"}>0</span>
+      <button className={"counter-action increment"}>+</button>
     </div>
   );
 };
 
 let Player = () => {
   return (
-    <div>
-      <span>Brian</span>
+    <div className={"player"}>
+      <span className={"player-name"}>
+        Brian
+      </span>
       <Counter/>
     </div>
   );
