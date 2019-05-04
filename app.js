@@ -1,5 +1,19 @@
 const React = window.React;
 const ReactDOM = window.ReactDOM;
+let players = [
+  {
+    name: "Brian",
+    score: 25,
+  },
+  {
+    name: "Laura",
+    score: 30,
+  },
+  {
+    name: "Zippy",
+    score: 35,
+  },
+];
 
 let Header = (props) => {
   return (
@@ -33,26 +47,32 @@ let Player = (props) => {
   );
 };
 
-let App = () => {
+let App = (props) => {
   return (
     <div className={"scoreboard"}>
       <Header
         title={"My Scoreboard"}
         numberOfPlayers={2}
       />
-      <Player
-        name={"Brian"}
-        score={5}
-      />
-      <Player
-        name={"Laura"}
-        score={6}
-      />
+      {
+        props.initialPlayers.map(
+          (player) => {
+            return (
+              <Player
+                name={player.name}
+                score={player.score}
+              />
+            );
+          }
+        )
+      }
     </div>
   );
 };
 
 ReactDOM.render(
-  <App/>,
+  <App
+    initialPlayers={players}
+  />,
   document.getElementById('root')
 );
