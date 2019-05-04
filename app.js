@@ -1,32 +1,34 @@
 const React = window.React;
 const ReactDOM = window.ReactDOM;
 
-let Header = () => {
+let Header = (props) => {
   return (
     <header>
-      <h1>Scoreboard</h1>
-      <span className={"stats"}>Players: {1}</span>
+      <h1>{props.title}</h1>
+      <span className={"stats"}>Players: {props.numberOfPlayers}</span>
     </header>
   );
 };
 
-let Counter = () => {
+let Counter = (props) => {
   return (
     <div className={"counter"}>
       <button className={"counter-action decrement"}>-</button>
-      <span className={"counter-score"}>0</span>
+      <span className={"counter-score"}>{props.score}</span>
       <button className={"counter-action increment"}>+</button>
     </div>
   );
 };
 
-let Player = () => {
+let Player = (props) => {
   return (
     <div className={"player"}>
       <span className={"player-name"}>
-        Brian
+        {props.name}
       </span>
-      <Counter/>
+      <Counter
+        score={props.score}
+      />
     </div>
   );
 };
@@ -34,9 +36,18 @@ let Player = () => {
 let App = () => {
   return (
     <div className={"scoreboard"}>
-      <Header/>
-      <Player/>
-      <Player/>
+      <Header
+        title={"My Scoreboard"}
+        numberOfPlayers={2}
+      />
+      <Player
+        name={"Brian"}
+        score={5}
+      />
+      <Player
+        name={"Laura"}
+        score={6}
+      />
     </div>
   );
 };
