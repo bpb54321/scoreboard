@@ -1,16 +1,35 @@
 const React = window.React;
 const ReactDOM = window.ReactDOM;
 
-function Header() {
+let Counter = () => {
   return (
-    <header>
-      <h1>Scoreboard</h1>
-      <span className={"stats"}>Players: 1</span>
-    </header>
+    <div>
+      <button>Decrement</button>
+      <span>0</span>
+      <button>Increment</button>
+    </div>
   );
-}
+};
+
+let Player = () => {
+  return (
+    <div>
+      <span>Brian</span>
+      <Counter/>
+    </div>
+  );
+};
+
+let Scoreboard = () => {
+  return (
+    <div>
+      <Player/>
+      <Player/>
+    </div>
+  );
+};
 
 ReactDOM.render(
-  <Header/>,
+  <Scoreboard/>,
   document.getElementById('root')
 );
