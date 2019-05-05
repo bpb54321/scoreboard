@@ -1,5 +1,6 @@
 const React = window.React;
 const ReactDOM = window.ReactDOM;
+
 let players = [
   {
     name: "Brian",
@@ -18,61 +19,69 @@ let players = [
   },
 ];
 
-let Header = (props) => {
-  return (
-    <header>
-      <h1>{props.title}</h1>
-      <span className={"stats"}>Players: {props.numberOfPlayers}</span>
-    </header>
-  );
-};
+class Header extends React.Component {
+  render() {
+    return (
+      <header>
+        <h1>{this.props.title}</h1>
+        <span className={"stats"}>Players: {this.props.numberOfPlayers}</span>
+      </header>
+    );
+  }
+}
 
-let Counter = (props) => {
-  return (
-    <div className={"counter"}>
-      <button className={"counter-action decrement"}>-</button>
-      <span className={"counter-score"}>{props.score}</span>
-      <button className={"counter-action increment"}>+</button>
-    </div>
-  );
-};
+class Counter extends React.Component {
+  render() {
+    return (
+      <div className={"counter"}>
+        <button className={"counter-action decrement"}>-</button>
+        <span className={"counter-score"}>{this.props.score}</span>
+        <button className={"counter-action increment"}>+</button>
+      </div>
+    );
+  }
+}
 
-let Player = (props) => {
-  return (
-    <div className={"player"}>
+class Player extends React.Component {
+  render() {
+    return (
+      <div className={"player"}>
       <span className={"player-name"}>
-        {props.name}
+        {this.props.name}
       </span>
-      <Counter
-        score={props.score}
-      />
-    </div>
-  );
-};
+        <Counter
+          score={this.props.score}
+        />
+      </div>
+    );
+  }
+}
 
-let App = (props) => {
-  return (
-    <div className={"scoreboard"}>
-      <Header
-        title={"My Scoreboard"}
-        numberOfPlayers={props.initialPlayers.length}
-      />
-      {
-        props.initialPlayers.map(
-          (player) => {
-            return (
-              <Player
-                name={player.name}
-                score={player.score}
-                key={player.id.toString()}
-              />
-            );
-          }
-        )
-      }
-    </div>
-  );
-};
+class App extends React.Component {
+  render() {
+    return (
+      <div className={"scoreboard"}>
+        <Header
+          title={"My Scoreboard"}
+          numberOfPlayers={this.props.initialPlayers.length}
+        />
+        {
+          this.props.initialPlayers.map(
+            (player) => {
+              return (
+                <Player
+                  name={player.name}
+                  score={player.score}
+                  key={player.id.toString()}
+                />
+              );
+            }
+          )
+        }
+      </div>
+    );
+  }
+}
 
 ReactDOM.render(
   <App
