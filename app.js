@@ -36,7 +36,12 @@ class Player extends React.Component {
   render() {
     return (
       <div className={"player"}>
+
         <span className={"player-name"}>
+          <button
+            className={"remove-player"}
+            onClick={() => this.props.removePlayer(this.props.id) }
+          >✖</button>
           {this.props.name}
         </span>
         <Counter
@@ -98,6 +103,22 @@ class App extends React.Component {
 
   };
 
+  removePlayer = (playerId) => {
+
+    this.setState((previousState) => {
+
+      let updatedPlayers = previousState.players.filter((player) => {
+        return player.id !== playerId;
+      });
+
+      return {
+        players: updatedPlayers,
+      };
+
+    });
+
+  };
+
   render() {
     return (
       <div className={"scoreboard"}>
@@ -115,6 +136,7 @@ class App extends React.Component {
                   key={player.id.toString()} // React's required key prop must be a string
                   id={player.id}
                   changePlayerScore={this.changePlayerScore}
+                  removePlayer={this.removePlayer}
                 />
               );
             }
