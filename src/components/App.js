@@ -1,58 +1,7 @@
 import React from 'react';
 
-class Header extends React.Component {
-  render() {
-    return (
-      <header>
-        <h1>{this.props.title}</h1>
-        <span className={"stats"}>Players: {this.props.numberOfPlayers}</span>
-      </header>
-    );
-  }
-}
-
-class Counter extends React.Component {
-
-  render() {
-    return (
-      <div className={"counter"}>
-        <button
-          className={"counter-action decrement"}
-          onClick={ () => this.props.changePlayerScore(this.props.playerId, 'decrement') }
-        >-</button>
-        <span className={"counter-score"}>{this.props.score}</span>
-        <button
-          className={"counter-action increment"}
-          onClick={ () => this.props.changePlayerScore(this.props.playerId, 'increment') }
-        >+</button>
-      </div>
-    );
-  }
-}
-
-class Player extends React.Component {
-
-  render() {
-    return (
-      <div className={"player"}>
-
-        <span className={"player-name"}>
-          <button
-            className={"remove-player"}
-            onClick={() => this.props.removePlayer(this.props.id) }
-          >✖</button>
-          {this.props.name}
-        </span>
-        <Counter
-          changePlayerScore={this.props.changePlayerScore}
-          playerId={this.props.id}
-          score={this.props.score}
-        />
-      </div>
-    );
-  }
-
-}
+import Header from './Header';
+import Player from './Player';
 
 export default class App extends React.Component {
   state = {
