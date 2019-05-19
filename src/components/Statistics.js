@@ -5,7 +5,9 @@ export default class Statistics extends React.Component {
     return (
       <div data-testid="statistics"
       >
-
+        <div>
+          <span data-testid="player-count"></span>
+        </div>
       </div>
     );
   }
