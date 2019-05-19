@@ -1,5 +1,4 @@
-const React = window.React;
-const ReactDOM = window.ReactDOM;
+import React from 'react';
 
 class Header extends React.Component {
   render() {
@@ -55,7 +54,7 @@ class Player extends React.Component {
 
 }
 
-class App extends React.Component {
+export default class App extends React.Component {
   state = {
     players: [
       {
@@ -147,7 +146,3 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <App/>,
-  document.getElementById('root')
-);
