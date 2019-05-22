@@ -2,6 +2,7 @@ import React from 'react';
 
 import Header from './Header';
 import Player from './Player';
+import NewPlayerForm from "./NewPlayerForm";
 
 export default class App extends React.Component {
   state = {
@@ -74,22 +75,19 @@ export default class App extends React.Component {
           title={"My Scoreboard"}
           numberOfPlayers={this.state.players.length}
         />
-        {
-          this.state.players.map(
-            (player) => {
-              return (
-                <Player
-                  name={player.name}
-                  score={player.score}
-                  key={player.id.toString()} // React's required key prop must be a string
-                  id={player.id}
-                  changePlayerScore={this.changePlayerScore}
-                  removePlayer={this.removePlayer}
-                />
-              );
-            }
-          )
-        }
+        {this.state.players.map((player) => {
+          return (
+            <Player
+              name={player.name}
+              score={player.score}
+              key={player.id.toString()} // React's required key prop must be a string
+              id={player.id}
+              changePlayerScore={this.changePlayerScore}
+              removePlayer={this.removePlayer}
+            />
+          );
+        })}
+        <NewPlayerForm/>
       </div>
     );
   }
