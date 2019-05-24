@@ -21,4 +21,10 @@ describe('NewPlayerForm', function() {
       .find('[data-testid="player-name"]')
       .should('match', 'input[type="text"]');
   });
+
+  it('The add new player button has certain styles', function() {
+    cy.get('@new-player-form')
+      .find('[data-testid="add-new-player-button"]')
+      .should('have.css', 'font-family', 'Arial');
+  });
 });
