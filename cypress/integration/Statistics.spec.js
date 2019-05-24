@@ -25,10 +25,16 @@ describe('Statistics component', function() {
     });
   });
 
-  it('displays the total score of all the players', function () {
-    // Given it has the total score element
+  it('displays the total points of all the players', function () {
+    // Given it has the total points element
     cy.get('@statistics')
-      .find('[data-testid="total-score"]')
-      .as('total-score');
+      .find('[data-testid="total-points"]')
+      .as('total-points');
+
+    // And the total points element has a label which reads "TOTAL POINTS: "
+    cy.get('@statistics')
+      .find('[data-testid="total-points-label"]')
+      .should('have.text', 'TOTAL POINTS: ');
+
   });
 });
