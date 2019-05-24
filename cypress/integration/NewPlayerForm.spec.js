@@ -15,4 +15,10 @@ describe('NewPlayerForm', function() {
       .find('[data-testid="add-new-player-button"]')
       .should('match', 'button');
   });
+
+  it('Has a text input for adding the new player\'s name', function() {
+    cy.get('@new-player-form')
+      .find('[data-testid="player-name"]')
+      .should('match', 'input[type="text"]');
+  });
 });
