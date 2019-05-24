@@ -1,5 +1,10 @@
+@import 'functions';
+
 $block: new-player-form;
 
 .#{$block}__add-new-player-button {
   font-family: 'Arial', sans-serif;
+  background-color: rgb(68, 51, 141);
+  color: rgb(255, 255, 255);
+  font-size: px-to-rem(9.6px);
 }

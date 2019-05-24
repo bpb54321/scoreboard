@@ -1,0 +1,8 @@
+//
+// Converts a pixel length to rem, assuming that the browser default font-size is 16px.
+// @param $length A length in pixels.
+// @return The equivalent length in rem units.
+//
+@function px-to-rem($length) {
+  @return ($length / 16px) + rem;
+}
