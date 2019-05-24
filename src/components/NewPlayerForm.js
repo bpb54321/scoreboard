@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../css/NewPlayerForm.css';
+import '../scss/_new-player-form.scss';
 
 export default class NewPlayerForm extends React.Component {
   render() {
