@@ -7,7 +7,6 @@ class Header extends React.Component {
       <header>
         <Statistics/>
         <h1>{this.props.title}</h1>
-        <span className={"stats"}>Players: {this.props.numberOfPlayers}</span>
       </header>
     );
   }

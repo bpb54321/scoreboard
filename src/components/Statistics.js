@@ -8,6 +8,9 @@ export default class Statistics extends React.Component {
         <div>
           <span data-testid="player-count">3</span>
         </div>
+        <div>
+          <span data-testid="total-score"></span>
+        </div>
       </div>
     );
   }

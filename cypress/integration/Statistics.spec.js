@@ -1,14 +1,15 @@
 describe('Statistics component', function() {
-  it('Is present in the scoreboard', function() {
-    cy.get('[data-testid="statistics"]');
-  });
 
-  it('Displays the total number players', function() {
+  beforeEach(function() {
 
-    // Given the statistics component is present
+    // Get the wrapper element for this component
     cy.get('[data-testid="statistics"]').as('statistics');
 
-    // And it has the player count element
+  });
+
+  it('Displays the total number of players', function() {
+
+    // Given it has the player count element
     cy.get('@statistics')
       .find('[data-testid="player-count"]')
       .as('player-count');
@@ -22,5 +23,12 @@ describe('Statistics component', function() {
       cy.get('@player-count')
         .should('have.text', numberOfPlayers + '');
     });
+  });
+
+  it('displays the total score of all the players', function () {
+    // Given it has the total score element
+    cy.get('@statistics')
+      .find('[data-testid="total-score"]')
+      .as('total-score');
   });
 });
