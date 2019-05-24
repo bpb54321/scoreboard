@@ -36,5 +36,19 @@ describe('Statistics component', function() {
       .find('[data-testid="total-points-label"]')
       .should('have.text', 'TOTAL POINTS: ');
 
+    // Then the total points should display the sum of the initial points of all the intial
+    // players
+    cy.get('.counter-score').then(function ($counterScores) {
+      let totalScore = 0;
+      $counterScores.each(function (index, element) {
+        let $element = Cypress.$(element);
+        let counterScore = parseInt($element.text());
+        totalScore += counterScore;
+      });
+
+      cy.get('@total-points')
+        .should('have.text', totalScore + '');
+    });
+
   });
 });

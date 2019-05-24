@@ -10,7 +10,7 @@ export default class Statistics extends React.Component {
         </div>
         <div>
           <span data-testid="total-points-label">TOTAL POINTS: </span>
-          <span data-testid="total-points"></span>
+          <span data-testid="total-points">0</span>
         </div>
       </div>
     );
