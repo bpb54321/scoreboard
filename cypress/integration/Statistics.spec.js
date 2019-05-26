@@ -5,6 +5,10 @@ describe('Statistics component', function() {
     // Get the wrapper element for this component
     cy.get('[data-testid="statistics"]').as('statistics');
 
+    // Get child components / elements as well
+    cy.get('@statistics')
+      .find('[data-testid="total-points"]')
+      .as('total-points');
   });
 
   it('displays the total number of players', function() {
@@ -18,15 +22,15 @@ describe('Statistics component', function() {
     cy.get('.player').then(($player) => {
       let numberOfPlayers = $player.length;
 
-      console.log(`numberOfPlayers: ${numberOfPlayers}`);
-
       cy.get('@player-count')
         .should('have.text', numberOfPlayers + '');
     });
+
   });
 
   it('accurately displays the total points of all the players ' +
     'upon initialization', function () {
+
     // Given it has the total points element
     cy.get('@statistics')
       .find('[data-testid="total-points"]')
@@ -44,7 +48,7 @@ describe('Statistics component', function() {
   });
 
   it.only("should display 3 after the first player's score is increased " +
-    "to 2 and the second player's score is increased to 1", async function () {
+    "to 2 and the second player's score is increased to 1", function () {
 
     // When I click twice on the increment score button of the first player and I click
     // once on the increment score button of the second player
@@ -62,21 +66,16 @@ describe('Statistics component', function() {
               incrementButton
                 .trigger('click');
               break;
+            default:
+              // Do nothing
           }
         }
       });
     });
 
-    // cy.get('.counter-score').then(function ($counterScores) {
-    //   let totalScore = 0;
-    //   $counterScores.each(function (index, element) {
-    //     let $element = Cypr (ess.$(element);
-    //     let counterScore = parseInt($element.text());
-    //     totalScore += counterScore;
-    //   });
-    //
-    //   cy.get('@total-points')
-    //     .should('have.text', totalScore + '');
-    // });
+    cy.get('@total-points').should(($totalPoints) => {
+      expect($totalPoints).to.have.text('3');
+    });
+
   });
 });
