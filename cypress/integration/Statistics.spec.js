@@ -7,7 +7,7 @@ describe('Statistics component', function() {
 
   });
 
-  it('Displays the total number of players', function() {
+  it('displays the total number of players', function() {
 
     // Given it has the player count element
     cy.get('@statistics')
@@ -25,7 +25,8 @@ describe('Statistics component', function() {
     });
   });
 
-  it('displays the total points of all the players', function () {
+  it('accurately displays the total points of all the players ' +
+    'upon initialization', function () {
     // Given it has the total points element
     cy.get('@statistics')
       .find('[data-testid="total-points"]')
@@ -36,19 +37,46 @@ describe('Statistics component', function() {
       .find('[data-testid="total-points-label"]')
       .should('have.text', 'TOTAL POINTS: ');
 
-    // Then the total points should display the sum of the initial points of all the intial
-    // players
-    cy.get('.counter-score').then(function ($counterScores) {
-      let totalScore = 0;
-      $counterScores.each(function (index, element) {
-        let $element = Cypress.$(element);
-        let counterScore = parseInt($element.text());
-        totalScore += counterScore;
-      });
+    // Then the total points should initially display 0
+    cy.get('@total-points')
+      .should('have.text', '0');
 
-      cy.get('@total-points')
-        .should('have.text', totalScore + '');
+  });
+
+  it.only("should display 3 after the first player's score is increased " +
+    "to 2 and the second player's score is increased to 1", async function () {
+
+    // When I click twice on the increment score button of the first player and I click
+    // once on the increment score button of the second player
+    cy.get('.player').then(function ($players) {
+      $players.each((index, element) => {
+        if (index <= 1) {
+          let incrementButton = Cypress.$(element).find('[data-testid="increment-button"]');
+          switch (index) {
+            case 0:
+              incrementButton
+                .trigger('click')
+                .trigger('click');
+              break;
+            case 1:
+              incrementButton
+                .trigger('click');
+              break;
+          }
+        }
+      });
     });
 
+    // cy.get('.counter-score').then(function ($counterScores) {
+    //   let totalScore = 0;
+    //   $counterScores.each(function (index, element) {
+    //     let $element = Cypr (ess.$(element);
+    //     let counterScore = parseInt($element.text());
+    //     totalScore += counterScore;
+    //   });
+    //
+    //   cy.get('@total-points')
+    //     .should('have.text', totalScore + '');
+    // });
   });
 });

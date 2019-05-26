@@ -12,6 +12,7 @@ export default class Counter extends React.Component {
         <span className={"counter-score"}>{this.props.score}</span>
         <button
           className={"counter-action increment"}
+          data-testid="increment-button"
           onClick={ () => this.props.changePlayerScore(this.props.playerId, 'increment') }
         >+</button>
       </div>
