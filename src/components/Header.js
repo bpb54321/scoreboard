@@ -5,7 +5,9 @@ class Header extends React.Component {
   render() {
     return (
       <header>
-        <Statistics/>
+        <Statistics
+          totalPoints={this.props.totalPoints}
+        />
         <h1>{this.props.title}</h1>
       </header>
     );

@@ -23,20 +23,24 @@ export default class App extends React.Component {
         id: 3,
       },
     ],
+    totalPoints: 0,
   };
 
-
-  changePlayerScore = (playerId, action) => {
+  changePlayerScoreAndUpdateTotalPoints = (playerId, action) => {
 
     this.setState((previousState) => {
+
+      let totalPoints = previousState.totalPoints;
 
       let updatedPlayers = previousState.players.map((player) => {
 
         if (player.id === playerId) {
           if (action === 'increment') {
             player.score++;
+            totalPoints++;
           } else {
             player.score--;
+            totalPoints--;
           }
         }
 
@@ -45,7 +49,8 @@ export default class App extends React.Component {
       });
 
       return {
-        players: updatedPlayers
+        players: updatedPlayers,
+        totalPoints: totalPoints,
       };
 
     });
@@ -74,6 +79,7 @@ export default class App extends React.Component {
         <Header
           title={"My Scoreboard"}
           numberOfPlayers={this.state.players.length}
+          totalPoints={this.state.totalPoints}
         />
         {this.state.players.map((player) => {
           return (
@@ -82,7 +88,7 @@ export default class App extends React.Component {
               score={player.score}
               key={player.id.toString()} // React's required key prop must be a string
               id={player.id}
-              changePlayerScore={this.changePlayerScore}
+              changePlayerScoreAndUpdateTotalPoints={this.changePlayerScoreAndUpdateTotalPoints}
               removePlayer={this.removePlayer}
             />
           );

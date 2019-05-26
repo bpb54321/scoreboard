@@ -16,7 +16,7 @@ export default class Player extends React.Component {
           {this.props.name}
         </span>
         <Counter
-          changePlayerScore={this.props.changePlayerScore}
+          changePlayerScoreAndUpdateTotalPoints={this.props.changePlayerScoreAndUpdateTotalPoints}
           playerId={this.props.id}
           score={this.props.score}
         />
