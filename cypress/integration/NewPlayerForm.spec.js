@@ -43,4 +43,32 @@ describe('NewPlayerForm', function() {
       .find('[data-testid="add-new-player-button"]')
       .should('have.css', 'font-size', '19.2px')
   });
+
+  it.only('should add a new player to the list of players', function () {
+    // When I type "Michael" into the new player text input
+    const name = "Michael";
+    cy.get('@new-player-form')
+      .find('[data-testid="player-name"]')
+      .type(name);
+
+    // And I click the add new player button
+    cy.get('@new-player-form')
+      .find('[data-testid="add-new-player-button"]')
+      .click();
+
+    // Then there should now be 4 total players
+    cy.get('.player').then(($players) => {
+      expect($players.length).to.equal(4);
+    });
+
+    // And the last player in the player list should have the name "Michael"
+    // cy.get('.player').then(($players) => {
+    //   let lastPlayerName = $players.last().find('.player-name').text();
+    //   expect(lastPlayerName).to.equal('Michael');
+    // });
+
+    // And the player "Michael" should have an initial score of 0
+
+
+  });
 });

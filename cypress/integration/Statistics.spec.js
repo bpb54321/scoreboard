@@ -47,7 +47,7 @@ describe('Statistics component', function() {
 
   });
 
-  it.only("should display 3 after the first player's score is increased " +
+  it("should display 3 after the first player's score is increased " +
     "to 2 and the second player's score is increased to 1", function () {
 
     // When I click twice on the increment score button of the first player and I click
