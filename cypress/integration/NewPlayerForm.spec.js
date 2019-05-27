@@ -71,30 +71,36 @@ describe('NewPlayerForm', function() {
 
   });
 
-  it("When a new player is added, the new player's name should be the " +
+  specify("When a new player is added, the new player's name should be the " +
     "same name that was entered in the add new player form" , function () {
 
-    // When I type "Michael" into the new player text input
+    // When I add a player named "Michael"
     const name = "Michael";
 
-    cy.get('@new-player-form')
-      .find('[data-testid="player-name"]')
-      .type(name);
+    cy.addNewPlayer(name);
 
-    // And I click the add new player button
-    cy.get('@new-player-form')
-      .find('[data-testid="add-new-player-button"]')
-      .click();
-
-    // Then the last player in the player list should have the name "Michael"
+    // Then the last player in the player list should have the name that we entered
     cy.get('[data-testid="player"]').then(($players) => {
       let lastPlayerName = $players.last().find('[data-testid="player-name"]').text();
-      expect(lastPlayerName).to.equal('Michael');
+      expect(lastPlayerName).to.equal(name);
     });
 
   });
 
-  // context('should ', function () {
-  //
-  // });
+  specify("After a new player is added, the new player text input should " +
+    "be cleared.", function () {
+
+    // When I add a player named "Michael"
+    const name = "Michael";
+
+    cy.addNewPlayer(name);
+
+    // Then the name input should be cleared
+    cy.get('@new-player-form')
+      .find('[data-testid="player-name"]')
+      .then(($playerName) => {
+        expect($playerName).to.have.value('');
+      });
+
+  });
 });
