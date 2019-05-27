@@ -10,20 +10,21 @@ export default class App extends React.Component {
       {
         name: "Brian",
         score: 0,
-        id: 1,
+        id: 0,
       },
       {
         name: "Laura",
         score: 0,
-        id: 2,
+        id: 1,
       },
       {
         name: "Zippy",
         score: 0,
-        id: 3,
+        id: 2,
       },
     ],
     totalPoints: 0,
+    lastIdUsed: 2,
   };
 
   changePlayerScoreAndUpdateTotalPoints = (playerId, action) => {
@@ -73,6 +74,25 @@ export default class App extends React.Component {
 
   };
 
+  addPlayer = (playerName) => {
+    this.setState((previousState) => {
+
+      let newId = previousState.lastIdUsed + 1;
+
+      let newPlayers = previousState.players.concat({
+        name: playerName,
+        score: 0,
+        id: newId,
+      });
+
+      return {
+        players: newPlayers,
+        lastIdUsed: newId,
+      };
+
+    });
+  };
+
   render() {
     return (
       <div className={"scoreboard"} data-testid="scoreboard">
@@ -93,7 +113,9 @@ export default class App extends React.Component {
             />
           );
         })}
-        <NewPlayerForm/>
+        <NewPlayerForm
+          addPlayer={this.addPlayer}
+        />
       </div>
     );
   }

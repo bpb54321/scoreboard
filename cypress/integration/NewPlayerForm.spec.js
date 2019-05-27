@@ -45,6 +45,14 @@ describe('NewPlayerForm', function() {
   });
 
   it.only('should add a new player to the list of players', function () {
+
+    let initialNumberOfPlayers;
+
+    // Given I have a certain number of players in the players list
+    cy.get('.player').then(($players) => {
+      initialNumberOfPlayers = $players.length;
+    });
+
     // When I type "Michael" into the new player text input
     const name = "Michael";
     cy.get('@new-player-form')
@@ -56,9 +64,9 @@ describe('NewPlayerForm', function() {
       .find('[data-testid="add-new-player-button"]')
       .click();
 
-    // Then there should now be 4 total players
+    // Then the player list should now have 1 more player than it had before
     cy.get('.player').then(($players) => {
-      expect($players.length).to.equal(4);
+      expect($players.length).to.equal(initialNumberOfPlayers + 1);
     });
 
     // And the last player in the player list should have the name "Michael"
