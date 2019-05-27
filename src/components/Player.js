@@ -6,14 +6,22 @@ export default class Player extends React.Component {
 
   render() {
     return (
-      <div className={"player"}>
+      <div
+        className={"player"}
+        data-testid="player"
+      >
 
-        <span className={"player-name"}>
+        <span className={"player-name-container"}>
           <button
             className={"remove-player"}
             onClick={() => this.props.removePlayer(this.props.id) }
           >✖</button>
-          {this.props.name}
+          <span
+            data-testid="player-name"
+            className={"player-name"}
+          >
+            {this.props.name}
+          </span>
         </span>
         <Counter
           changePlayerScoreAndUpdateTotalPoints={this.props.changePlayerScoreAndUpdateTotalPoints}

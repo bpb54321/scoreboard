@@ -49,7 +49,7 @@ describe('NewPlayerForm', function() {
     let initialNumberOfPlayers;
 
     // Given I have a certain number of players in the players list
-    cy.get('.player').then(($players) => {
+    cy.get('[data-testid="player"]').then(($players) => {
       initialNumberOfPlayers = $players.length;
     });
 
@@ -65,13 +65,13 @@ describe('NewPlayerForm', function() {
       .click();
 
     // Then the player list should now have 1 more player than it had before
-    cy.get('.player').then(($players) => {
+    cy.get('[data-testid="player"]').then(($players) => {
       expect($players.length).to.equal(initialNumberOfPlayers + 1);
     });
 
   });
 
-  it.only("When a new player is added, the new player's name should be the " +
+  it("When a new player is added, the new player's name should be the " +
     "same name that was entered in the add new player form" , function () {
 
     // When I type "Michael" into the new player text input
@@ -87,8 +87,8 @@ describe('NewPlayerForm', function() {
       .click();
 
     // Then the last player in the player list should have the name "Michael"
-    cy.get('.player').then(($players) => {
-      let lastPlayerName = $players.last().find('.player-name').text();
+    cy.get('[data-testid="player"]').then(($players) => {
+      let lastPlayerName = $players.last().find('[data-testid="player-name"]').text();
       expect(lastPlayerName).to.equal('Michael');
     });
 
