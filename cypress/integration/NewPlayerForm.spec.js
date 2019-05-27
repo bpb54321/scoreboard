@@ -44,7 +44,7 @@ describe('NewPlayerForm', function() {
       .should('have.css', 'font-size', '19.2px')
   });
 
-  it.only('should add a new player to the list of players', function () {
+  it('should add a new player to the list of players', function () {
 
     let initialNumberOfPlayers;
 
@@ -69,14 +69,32 @@ describe('NewPlayerForm', function() {
       expect($players.length).to.equal(initialNumberOfPlayers + 1);
     });
 
-    // And the last player in the player list should have the name "Michael"
-    // cy.get('.player').then(($players) => {
-    //   let lastPlayerName = $players.last().find('.player-name').text();
-    //   expect(lastPlayerName).to.equal('Michael');
-    // });
+  });
 
-    // And the player "Michael" should have an initial score of 0
+  it.only("When a new player is added, the new player's name should be the " +
+    "same name that was entered in the add new player form" , function () {
 
+    // When I type "Michael" into the new player text input
+    const name = "Michael";
+
+    cy.get('@new-player-form')
+      .find('[data-testid="player-name"]')
+      .type(name);
+
+    // And I click the add new player button
+    cy.get('@new-player-form')
+      .find('[data-testid="add-new-player-button"]')
+      .click();
+
+    // Then the last player in the player list should have the name "Michael"
+    cy.get('.player').then(($players) => {
+      let lastPlayerName = $players.last().find('.player-name').text();
+      expect(lastPlayerName).to.equal('Michael');
+    });
 
   });
+
+  // context('should ', function () {
+  //
+  // });
 });
