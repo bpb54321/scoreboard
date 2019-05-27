@@ -23,3 +23,16 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('addNewPlayer', (playerName) => {
+
+  cy.get('@new-player-form')
+    .find('[data-testid="player-name"]')
+    .type(playerName);
+
+  // And I click the add new player button
+  cy.get('@new-player-form')
+    .find('[data-testid="add-new-player-button"]')
+    .click();
+
+});
