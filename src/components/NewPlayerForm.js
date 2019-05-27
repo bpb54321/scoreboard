@@ -11,6 +11,9 @@ export default class NewPlayerForm extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.addPlayer(this.state.newPlayerName);
+    this.setState({
+      newPlayerName: '',
+    });
   };
 
   handleTextInputChange = (event) => {
@@ -30,7 +33,7 @@ export default class NewPlayerForm extends React.Component {
           type={"text"}
           data-testid="player-name"
           onChange={this.handleTextInputChange}
-          value={this.newPlayerName}
+          value={this.state.newPlayerName}
         />
         <button
           data-testid="add-new-player-button"
