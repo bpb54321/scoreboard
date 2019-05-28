@@ -88,6 +88,9 @@ context('Statistics component', function() {
   });
 
   specify('The total players area should have a text label', function () {
-
+    cy.get('@player-count-label')
+      .then(($playerCountLabel) => {
+        expect($playerCountLabel).to.have.text('PLAYERS: ');
+      });
   });
 });
