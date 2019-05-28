@@ -19,20 +19,49 @@ context('Statistics component', function() {
       .as('player-count');
   });
 
-  specify('displays the total number of players', function() {
+  specify.only('It displays the total number of players', function () {
 
-    // Given it has the player count element
-    cy.get('@statistics')
-      .find('[data-testid="player-count"]')
-      .as('player-count');
+    // Given that we have an initial number of players
+    cy.get('[data-testid="player"').then(($players) => {
 
-    // Then the player count should be equal to the total number of Player elements on the page
-    cy.get('.player').then(($player) => {
-      let numberOfPlayers = $player.length;
+      let numberOfPlayers = $players.length;
 
       cy.get('@player-count')
-        .should('have.text', numberOfPlayers + '');
+        .should(($playerCount) => {
+          // Then player count should match the initial number of players
+          expect($playerCount).to.have.text(numberOfPlayers + '');
+        });
+
     });
+
+    // When we add two more players to the board
+    cy.addNewPlayer('Michael');
+    cy.addNewPlayer('Drew');
+
+    // Then the player count should still match the total number of players
+    cy.get('[data-testid="player"').then(($players) => {
+
+      let numberOfPlayers = $players.length;
+
+      cy.get('@player-count')
+        .should(($playerCount) => {
+          expect($playerCount).to.have.text(numberOfPlayers + '');
+        });
+    });
+
+    // When we remove the first 3 players from the board
+    cy.get('[data-testid="player"').then(($players) => {
+      $players.each((index, element) => {
+        if (index <= 2) {
+          cy.wrap(element)
+            .find('[data-testid="remove-player-button"]')
+            .click();
+        }
+      });
+    });
+
+    // Then the player count should still match the total number of players
+
 
   });
 

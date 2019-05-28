@@ -26,13 +26,13 @@
 
 Cypress.Commands.add('addNewPlayer', (playerName) => {
 
-  cy.get('@new-player-form')
-    .find('[data-testid="player-name"]')
-    .type(playerName);
+  cy.get('[data-testid="new-player-form"]')
+    .within(() => {
+      cy.get('[data-testid="player-name"]')
+        .type(playerName);
 
-  // And I click the add new player button
-  cy.get('@new-player-form')
-    .find('[data-testid="add-new-player-button"]')
-    .click();
+      cy.get('[data-testid="add-new-player-button"]')
+        .click();
+    });
 
 });
