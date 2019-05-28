@@ -1,4 +1,4 @@
-describe('Statistics component', function() {
+context('Statistics component', function() {
 
   beforeEach(function() {
 
@@ -9,9 +9,17 @@ describe('Statistics component', function() {
     cy.get('@statistics')
       .find('[data-testid="total-points"]')
       .as('total-points');
+
+    cy.get('@statistics')
+      .find('[data-testid="player-count-label"]')
+      .as('player-count-label');
+
+    cy.get('@statistics')
+      .find('[data-testid="player-count"]')
+      .as('player-count');
   });
 
-  it('displays the total number of players', function() {
+  specify('displays the total number of players', function() {
 
     // Given it has the player count element
     cy.get('@statistics')
@@ -28,7 +36,7 @@ describe('Statistics component', function() {
 
   });
 
-  it('accurately displays the total points of all the players ' +
+  specify('accurately displays the total points of all the players ' +
     'upon initialization', function () {
 
     // Given it has the total points element
@@ -47,7 +55,7 @@ describe('Statistics component', function() {
 
   });
 
-  it("should display 3 after the first player's score is increased " +
+  specify("should display 3 after the first player's score is increased " +
     "to 2 and the second player's score is increased to 1", function () {
 
     // When I click twice on the increment score button of the first player and I click
@@ -76,6 +84,10 @@ describe('Statistics component', function() {
     cy.get('@total-points').should(($totalPoints) => {
       expect($totalPoints).to.have.text('3');
     });
+
+  });
+
+  specify('The total players area should have a text label', function () {
 
   });
 });
