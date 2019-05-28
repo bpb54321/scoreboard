@@ -1,0 +1,23 @@
+$block: statistics;
+
+.#{$block} {
+  width: 170px;
+  margin: 0 0 0 28px;
+  font-weight: normal;
+
+  td {
+    &:first-child {
+      text-align: right;
+      font-weight: normal;
+      letter-spacing: 2px;
+      font-size: .7em;
+    }
+
+    &:last-child {
+      text-align: left;
+    }
+  }
+}
+
+
+

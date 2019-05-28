@@ -4,6 +4,8 @@ import Header from './Header';
 import Player from './Player';
 import NewPlayerForm from "./NewPlayerForm";
 
+import '../scss/_app.scss';
+
 export default class App extends React.Component {
   state = {
     players: [

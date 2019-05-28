@@ -102,5 +102,5 @@ context('NewPlayerForm', function() {
       });
 
   });
-  
+
 });

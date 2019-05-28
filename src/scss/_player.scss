@@ -1,0 +1,36 @@
+$block: player;
+
+.#{$block} {
+  display: flex;
+  font-size: 1.2em;
+  border-bottom: solid 2px #EEEEEE;
+  letter-spacing: 2px;
+
+  &:last-of-type {
+    border-bottom-color: #D4CAFF;
+  }
+}
+
+
+.#{$block}__player-name {
+  color: #2F2366;
+  flex-grow: 1;
+  line-height: 3.5em;
+  padding-left: 10px;
+}
+
+.#{$block}__remove-player {
+  font-size: 1.15em;
+  border: none;
+  outline: none;
+  visibility: hidden;
+  color: #EF5350;
+  cursor: pointer;
+  margin: 0 10px 0 0;
+  padding: 0;
+  background: none;
+
+  .#{$block}:hover & {
+    visibility: visible;
+  }
+}

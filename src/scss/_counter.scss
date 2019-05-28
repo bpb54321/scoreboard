@@ -1,0 +1,43 @@
+$block: counter;
+
+.#{$block} {
+  display: flex;
+  width: 190px;
+}
+
+.#{$block}__action {
+  border: none;
+  font-size: 1.15em;
+  font-weight: bold;
+  color: #B0AEBA;
+  background-color: #DCDCDC;
+  display: block;
+  padding: 20px 20px;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.#{$block}__increment {
+  &:hover {
+    background: #83D97C;
+  }
+}
+
+.#{$block}__decrement {
+  &:hover {
+    background: #EF5350;
+  }
+}
+
+.#{$block}__score {
+  flex-grow: 1;
+  text-align: center;
+  font-family: monospace;
+  font-size: 2em;
+  line-height: 2em;
+}
+

@@ -1,6 +1,8 @@
 import React from 'react';
 import Statistics from "./Statistics";
 
+import '../scss/_header.scss';
+
 class Header extends React.Component {
   render() {
     return (

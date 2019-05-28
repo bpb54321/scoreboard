@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../scss/_counter.scss';
+
 export default class Counter extends React.Component {
 
   render() {

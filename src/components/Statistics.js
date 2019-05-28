@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../scss/_statistics.scss';
+
 export default class Statistics extends React.Component {
   render() {
     return (

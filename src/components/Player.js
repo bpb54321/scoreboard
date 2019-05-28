@@ -2,6 +2,8 @@ import React from 'react';
 
 import Counter from "./Counter";
 
+import '../scss/_player.scss';
+
 export default class Player extends React.Component {
 
   render() {

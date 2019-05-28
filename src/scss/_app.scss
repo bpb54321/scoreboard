@@ -1,0 +1,90 @@
+body {
+  background: #e8e7e7;
+  font-family: arial, sans-serif;
+  text-transform: uppercase;
+}
+
+form {
+  display: flex;
+  background-color: #8063FA;
+}
+
+input[type=text] {
+  flex-grow: 1;
+  border-width: 0 0 1px 0;
+  margin: 15px 10px 15px 15px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #5B45B9;
+  border-style: none;
+  text-shadow: none;
+  text-transform: uppercase;
+  color: #C7BCF8;
+  letter-spacing: 2px;
+  outline: none;
+}
+
+input[type=text]::-webkit-input-placeholder{
+  color: #C7BCF8;
+  letter-spacing: 2px;
+}
+
+input[type=text]:focus{
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+input[type=submit] {
+  display: block;
+  font-size: .6em;
+  margin: 15px 15px 15px 0;
+  padding: 10px;
+  background-color: #44338D;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-shadow: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+button[type=submit] {
+  outline: none;
+  transition: background-color 0.2s ease,
+  color 0.2s ease;
+
+  &:hover {
+    background: #fff;
+    color: #44338D;
+    cursor: pointer;
+  }
+}
+
+/* ICONS */
+
+svg {
+  width: 28px;
+  height: 19px;
+  margin-right: 5px;
+  fill: #F0F0F0;
+}
+
+.is-high-score {
+  fill: #FFC657;
+  animation: grow 0.35s ease-in-out;
+  transform-origin: 50% 50%;
+}
+
+@keyframes grow {
+  50% { transform: scale(1.4) rotate(-3deg); }
+}
+
+.scoreboard {
+  background: #fff;
+  width: 700px;
+  margin: 70px auto;
+  box-shadow: 0 2px 0 rgb(133, 104, 250);
+  border-radius: 6px;
+  overflow: hidden;
+}
